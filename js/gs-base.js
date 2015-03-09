@@ -23,7 +23,7 @@ function mostrarFiltros(){
 
 function cargarPoligonos(){
     var xmlhttp = new XMLHttpRequest();
-    var url = "require/cargarDatos.php";
+    var url = "require/cargarAtributos.php";
 
     xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -60,6 +60,7 @@ function valor(valor){
 
 function cargarValores(){
     console.log("valores de "+atributoSeleccionado);
+    
 }
 
 
