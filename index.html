@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Geosolve</title>
+        <meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport' />
+        <link rel="shortcut icon" href="http://root.geosolve.cl/favicon.ico"/>
+        <link rel="icon" type="image/gif" href="http://root.geosolve.cl/animated_favicon1.gif" />
+        <link href="plugins/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+        <link href="css/gs-admin.css" rel="stylesheet"/>
+        <!-- MetisMenu CSS -->
+        <link href="plugins/metisMenu/dist/metisMenu.min.css" rel="stylesheet"/>
+        <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+        <link href="plugins/morrisjs/morris.css" rel="stylesheet"/>
+        <link href="plugins/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />
+
+        <!-- DataTables Responsive CSS -->
+        <link href="plugins/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet" />
+
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=visualization,drawing,places&sensor=false"></script>
+
+        <script src="plugins/jquery/dist/jquery.min.js"></script>   
+        <script src="plugins/jquery/dist/jquery-ui.min.js"></script>
+
+        <script src="js/gs-base.js"></script>
+
+
+        <!--
+<style type="text/css"> 
+#filtros{
+display:none; 
+}
+</style>
+-->
+
+
+    </head>
+    <body>
+        <div id="wrapper">
+            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a class="navbar-brand logo-gs" href="/"></a>
+                </div>
+
+                <!--ul class="nav navbar-top-links navbar-right"></ul-->
+                <!-- /.navbar-top-links -->
+                <!-- NAVEGADOR-->
+                <div class="navbar-default sidebar" role="navigation">
+                    <div class="sidebar-nav navbar-collapse">
+                        <ul class="nav" id="side-menu">
+                            <li>
+                                <!-- mostrar filtro, con el id llamo al dialog -->
+                                <a onclick="mostrarFiltros()" href="#"><i class="fa fa-wrench fa-fw"></i>Mostrar Filtro</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.sidebar-collapse -->
+                </div>
+                <!-- /.navbar-static-side -->
+                <!-- NAVEGADOR-->
+            </nav>
+
+
+
+            <div id="page-wrapper">
+                <div class="row">
+
+                    <!-- CONTENT
+<div class="col-lg-12">
+
+<div class="panel panel-default">
+<!--DATATABLE-->
+                    <!--
+<div class="panel-body">
+body
+</div>
+<!--DATATABLE-->
+                    <!--
+</div>
+<!-- /.panel -->
+                    <!--
+</div>
+
+-->
+
+                    <!-- /.col-lg-8 -->
+                    <!-- FILTROS -->
+                    <div id="filtros" class="col-lg-12" style="display:none">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bell fa-fw"></i> Creación De Filtro
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+
+                                <label>Cree Su Filtro:</label>
+                                <br>
+
+                                <div class="form-group col-lg-4">
+                                    <label>Atributos:</label>
+                                    <select id="listaAtributos" onchange="valor(this.value)" multiple class="form-control">
+                                    </select>
+                                    <br>
+                                    <button type="button" class="btn btn-success" onclick="cargarValores();">Seleccionar Atributo</button>
+                                </div>
+                                
+                                <div class="form-group col-lg-4">
+                                    <label>Operadores:</label>
+                                    <select multiple class="form-control">
+                                        <option>=</option>
+                                        <option><=</option>
+                                        <option>>=</option>
+                                        <option><</option>
+                                        <option>></option>
+                                        <option>and</option>
+                                    </select>
+                                    <br>
+                                    <button type="button" class="btn btn-success">Seleccionar Operador</button>
+                                </div>
+                                
+                                <div class="form-group col-lg-4">
+                                    <label>Valores:</label>
+                                    <select multiple class="form-control">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                    </select>
+                                    <br>
+                                    <button type="button" class="btn btn-success">Seleccionar Valor</button>
+                                </div>
+
+
+                                <div class="col-lg-12">
+                                    <div class="form-group has-success">
+                                        <label class="control-label">Filtro:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <button type="button" class="btn btn-success">Consultar</button>
+                                </div>
+
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+
+                    </div>
+                    <!-- /.col-lg-4 -->
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <script src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="plugins/metisMenu/dist/metisMenu.min.js"></script>
+        <script src="plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+        <script src="plugins/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
+
+
+    </body>
+
+</html>

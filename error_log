@@ -1,0 +1,6 @@
+[09-Feb-2015 15:00:12 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home3/geosolv2/public_html/geosolve/sitios/pruebas/template/t1/index.php on line 15
+[09-Feb-2015 15:17:41 America/Chicago] PHP Warning:  Unknown: The session id is too long or contains illegal characters, valid characters are a-z, A-Z, 0-9 and '-,' in Unknown on line 0
+[09-Feb-2015 15:17:41 America/Chicago] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[09-Feb-2015 15:18:12 America/Chicago] PHP Warning:  Unknown: The session id is too long or contains illegal characters, valid characters are a-z, A-Z, 0-9 and '-,' in Unknown on line 0
+[09-Feb-2015 15:18:12 America/Chicago] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[11-Feb-2015 13:37:43 America/Chicago] PHP Parse error:  syntax error, unexpected '.1' (T_DNUMBER), expecting ',' or ';' in /home3/geosolv2/public_html/geosolve/sitios/pruebas/template/t1/index.php on line 22
