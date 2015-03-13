@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: application/json');
 
 $atributoSeleccionado = $_GET['atributoSeleccionado'];
 //$atributoSeleccionado = "nombre";
@@ -13,9 +14,10 @@ require_once __DIR__ . '/connectbd.php';
 $db = new DB_Connect();
 
 //get all products from products table
-$result = mysql_query("SELECT ".$atributoSeleccionado." FROM ".$nombreTabla) or die(mysql_error());
+$result = mysql_query("SELECT DISTINCT ".$atributoSeleccionado." FROM ".$nombreTabla." WHERE " .$atributoSeleccionado ."!=".'""' ) or die(mysql_error());
 
-//echo $result;
+//echo "SELECT DISTINCT ".$atributoSeleccionado." FROM ".$nombreTabla;
+//echo "<br>";
 
 // check for empty result
 if (mysql_num_rows($result) > 0) {
@@ -23,7 +25,10 @@ if (mysql_num_rows($result) > 0) {
     while ($row = mysql_fetch_array($result)) {
         // temp user array
         $datos = array();
-        $datos[$atributoSeleccionado] = $row[0];
+//        echo $row[0];
+//        echo "<br><br>";
+        
+        $datos[$atributoSeleccionado] = utf8_encode($row[0]);
         // push single product into final response array
         array_push($response, $datos);
     }

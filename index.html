@@ -58,7 +58,7 @@ display:none;
                         <ul class="nav" id="side-menu">
                             <li>
                                 <!-- mostrar filtro, con el id llamo al dialog -->
-                                <a onclick="mostrarFiltros()" href="#"><i class="fa fa-wrench fa-fw"></i>Mostrar Filtro</a>
+                                <a id="mostrarFiltros" onclick="mostrarFiltros()" href="#"><i class="fa fa-wrench fa-fw"></i>Mostrar Filtro</a>
                             </li>
                         </ul>
                     </div>
@@ -106,7 +106,8 @@ body
 
                                 <div class="form-group col-lg-4">
                                     <label>Atributos:</label>
-                                    <select id="listaAtributos" onchange="valor(this.value)" multiple class="form-control">
+                                    <select id="listaAtributos" onchange="valorAtributo(this.value)" multiple class="form-control">
+                                       <option>No hay Datos</option> 
                                     </select>
                                     <br>
                                     <button type="button" class="btn btn-success" onclick="cargarValores()">Seleccionar Atributo</button>
@@ -114,39 +115,30 @@ body
                                 
                                 <div class="form-group col-lg-4">
                                     <label>Operadores:</label>
-                                    <select id="listaOperadores" multiple class="form-control">
-                                        <option>=</option>
-                                        <option><=</option>
-                                        <option>>=</option>
-                                        <option><</option>
-                                        <option>></option>
-                                        <option>and</option>
+                                    <select id="listaOperadores" onchange="valorOperador(this.value)" multiple class="form-control">
+                                       <option>No hay Datos</option> 
                                     </select>
                                     <br>
-                                    <button type="button" class="btn btn-success">Seleccionar Operador</button>
+                                    <button type="button" class="btn btn-success" onclick="seleccionarOperador()">Seleccionar Operador</button>
                                 </div>
                                 
                                 <div class="form-group col-lg-4">
                                     <label>Valores:</label>
-                                    <select id="listaDatos" multiple class="form-control">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
+                                    <select id="listaDatos" onchange="valorValor(this.value)" multiple class="form-control">
+                                        <option>No hay Datos</option>
                                     </select>
                                     <br>
-                                    <button type="button" class="btn btn-success">Seleccionar Valor</button>
+                                    <button type="button" class="btn btn-success" onclick="seleccionarValor()">Seleccionar Valor</button>
                                 </div>
 
 
                                 <div class="col-lg-12">
                                     <div class="form-group has-success">
                                         <label class="control-label">Filtro:</label>
-                                        <input type="text" class="form-control">
+                                        <input id="filtroCreado" type="text" class="form-control" disabled>
                                     </div>
-                                    <button type="button" class="btn btn-success">Consultar</button>
+                                    <button onclick="consultar()" type="button" class="btn btn-success">Consultar</button>
+                                    <button onclick="borrarFiltro()" type="button" class="btn btn-danger">Borrar</button>
                                 </div>
 
                             </div>

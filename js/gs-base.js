@@ -7,6 +7,7 @@ por los datos de la bd
 linea Nº2  por el nombre de la tabla
 */
 
+var consultaUsuario = "";
 
 var mostrarFiltro = false;
 function mostrarFiltros(){
@@ -22,10 +23,41 @@ function mostrarFiltros(){
     cargarOperadores();
 }
 
+    
+
+//console.log("valores de "+atributoSeleccionado);
+//    var xmlhttp = new XMLHttpRequest();
+//    var url = "require/cargarFiltro.php?atributoSeleccionado="+atributoSeleccionado+"&operadorSeleccionado="+operadorSeleccionado+"&valorSeleccionado="+valorSeleccionado;
+//    xmlhttp.onreadystatechange=function() {
+//        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+//            myFunction(xmlhttp.responseText);
+//        }
+//    }
+//    xmlhttp.open("GET", url, true);
+//    xmlhttp.send();
+//    function myFunction(response) {
+//        var arr = JSON.parse(response);
+//        //var id          = arr[0].id;
+//        var out = "";
+//        //console.log(arr.length);
+//        var a=0;
+//        
+//        while(a<arr.length){
+//            //console.log(arr[a]);
+//            //console.log(arr[a][atributoSeleccionado]);
+//            out += "<option value='"+arr[a][atributoSeleccionado]  +"'"+">"+arr[a][atributoSeleccionado]+"</option>";
+//            a++;
+//        }
+//        
+//        document.getElementById("listaDatos").innerHTML = out;
+//    }
+
+
+
+
 function cargarAtributos(){
     var xmlhttp = new XMLHttpRequest();
     var url = "require/cargarAtributos.php";
-
     xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             myFunction(xmlhttp.responseText);
@@ -33,7 +65,6 @@ function cargarAtributos(){
     }
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
-
     function myFunction(response) {
         var arr = JSON.parse(response);
         var i;
@@ -52,22 +83,12 @@ function cargarAtributos(){
     }
 }
 
-
-//guardo el atributo que seleccione
-var atributoSeleccionado;
-function valor(valor){
-    //console.log(valor);
-    atributoSeleccionado = valor;
-}
-
 function cargarValores(){
+    seleccionarAtributo();
     document.getElementById("listaDatos").innerHTML = "";
     //console.log("valores de "+atributoSeleccionado);
-    
-    
     var xmlhttp = new XMLHttpRequest();
     var url = "require/cargarValores.php?atributoSeleccionado="+atributoSeleccionado;
-
     xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             myFunction(xmlhttp.responseText);
@@ -75,7 +96,6 @@ function cargarValores(){
     }
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
-
     function myFunction(response) {
         var arr = JSON.parse(response);
         //var id          = arr[0].id;
@@ -84,8 +104,7 @@ function cargarValores(){
         var a=0;
         while(a<arr.length){
             //console.log(arr[a]);
-            console.log(arr[a][atributoSeleccionado]);
-            
+            //console.log(arr[a][atributoSeleccionado]);
             out += "<option value='"+arr[a][atributoSeleccionado]  +"'"+">"+arr[a][atributoSeleccionado]+"</option>";
             a++;
         }
@@ -97,7 +116,7 @@ function cargarValores(){
 
 function cargarOperadores(){
     var xmlhttp = new XMLHttpRequest();
-    var url = "require/cargaroperadores.php";
+    var url = "require/cargarOperadores.php";
 
     xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -124,6 +143,51 @@ function cargarOperadores(){
         document.getElementById("listaOperadores").innerHTML = out;
     }
 }
+
+
+
+//guardo el atributo que seleccione
+var atributoSeleccionado;
+function valorAtributo(valor){
+    //console.log(valor);
+    atributoSeleccionado = valor;
+}
+
+//guardo el operador seleccionado
+var operadorSeleccionado;
+function valorOperador(valor){
+    operadorSeleccionado = valor;
+}
+
+//guardo el valor seleccionado
+var valorSeleccionado;
+function valorValor(valor){
+    valorSeleccionado = valor;
+}
+
+function seleccionarAtributo(){
+    consultaUsuario += atributoSeleccionado + " ";
+    document.getElementById("filtroCreado").value= consultaUsuario;
+}
+function seleccionarOperador(){
+    consultaUsuario += operadorSeleccionado + " ";
+    document.getElementById("filtroCreado").value= consultaUsuario; 
+}
+function seleccionarValor(){
+    consultaUsuario += valorSeleccionado + " ";
+    document.getElementById("filtroCreado").value= consultaUsuario; 
+}
+function borrarFiltro(){
+    consultaUsuario = "";
+    document.getElementById("filtroCreado").value= consultaUsuario;    
+}
+//boton consultar
+function consultar(){
+    var consulta = document.getElementById("filtroCreado").value;
+    console.log("consultar: "+consulta);
+}
+
+
 
 
 
