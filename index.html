@@ -47,9 +47,9 @@
         <style type="text/css"> 
             #filtros{
                 display:none;
-                
+
             }
-            
+
         </style>
 
 
@@ -106,9 +106,10 @@
                                     <label>Atributos:</label>
                                     <select id="listaAtributos" onchange="valorAtributo(this.value)" multiple class="form-control">
                                         <option>No hay Datos</option> 
+
                                     </select>
                                     <br>
-                                    <button type="button" class="btn btn-success fa fa-arrow-down" onclick="cargarValores()"> </button>
+                                    <button type="button" class="btn btn-success fa fa-arrow-down" onclick="seleccionarAtributo()"> </button>
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <label>Operadores:</label>
@@ -119,7 +120,15 @@
                                     <button type="button" class="btn btn-success fa fa-arrow-down" onclick="seleccionarOperador()"></button>
                                 </div>
                                 <div class="form-group col-lg-4">
-                                    <label>Valores:</label>
+
+
+                                    <div class="form-group">
+                                        <label>Valores:</label>
+                                        <button type="button" class="btn btn-success fa fa-cloud-download" onclick="cargarValores()" style = "float:right"> </button>
+                                        <br><br>
+                                        <input type="text" placeholder="Ingrese Valor" class="form-control">
+                                    </div>
+
                                     <select id="listaDatos" onchange="valorValor(this.value)" multiple class="form-control">
                                         <option>No hay Datos</option>
                                     </select>
