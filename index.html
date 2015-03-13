@@ -25,14 +25,33 @@
 
         <script src="js/gs-base.js"></script>
 
+        <script type="text/javascript"> 
 
-        <!--
-<style type="text/css"> 
-#filtros{
-display:none; 
-}
-</style>
--->
+
+            $(document).ready(function(){
+                $("#mostrarFiltros").click(function() { 
+                    $("#filtros").dialog({ 
+                        width: 590,  
+                        height: 350,
+                        show: "scale",
+                        hide: "scale", 
+                        resizable: "false", 
+                        position: "center",
+                        modal: "true"
+                    });
+                });
+            });
+
+        </script>
+
+        <style type="text/css"> 
+            #filtros{
+                display:none;
+                
+            }
+            
+        </style>
+
 
 
     </head>
@@ -73,65 +92,40 @@ display:none;
             <div id="page-wrapper">
                 <div class="row">
 
-                    <!-- CONTENT
-<div class="col-lg-12">
-
-<div class="panel panel-default">
-<!--DATATABLE-->
-                    <!--
-<div class="panel-body">
-body
-</div>
-<!--DATATABLE-->
-                    <!--
-</div>
-<!-- /.panel -->
-                    <!--
-</div>
-
--->
-
-                    <!-- /.col-lg-8 -->
                     <!-- FILTROS -->
-                    <div id="filtros" class="col-lg-12" style="display:none">
+                    <div id="filtros">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <i class="fa fa-bell fa-fw"></i> Creación De Filtro
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
-
                                 <label>Cree Su Filtro:</label>
                                 <br>
-
                                 <div class="form-group col-lg-4">
                                     <label>Atributos:</label>
                                     <select id="listaAtributos" onchange="valorAtributo(this.value)" multiple class="form-control">
-                                       <option>No hay Datos</option> 
+                                        <option>No hay Datos</option> 
                                     </select>
                                     <br>
-                                    <button type="button" class="btn btn-success" onclick="cargarValores()">Seleccionar Atributo</button>
+                                    <button type="button" class="btn btn-success fa fa-arrow-down" onclick="cargarValores()"> </button>
                                 </div>
-                                
                                 <div class="form-group col-lg-4">
                                     <label>Operadores:</label>
                                     <select id="listaOperadores" onchange="valorOperador(this.value)" multiple class="form-control">
-                                       <option>No hay Datos</option> 
+                                        <option>No hay Datos</option> 
                                     </select>
                                     <br>
-                                    <button type="button" class="btn btn-success" onclick="seleccionarOperador()">Seleccionar Operador</button>
+                                    <button type="button" class="btn btn-success fa fa-arrow-down" onclick="seleccionarOperador()"></button>
                                 </div>
-                                
                                 <div class="form-group col-lg-4">
                                     <label>Valores:</label>
                                     <select id="listaDatos" onchange="valorValor(this.value)" multiple class="form-control">
                                         <option>No hay Datos</option>
                                     </select>
                                     <br>
-                                    <button type="button" class="btn btn-success" onclick="seleccionarValor()">Seleccionar Valor</button>
+                                    <button type="button" class="btn btn-success fa fa-arrow-down" onclick="seleccionarValor()"></button>
                                 </div>
-
-
                                 <div class="col-lg-12">
                                     <div class="form-group has-success">
                                         <label class="control-label">Filtro:</label>
@@ -140,11 +134,9 @@ body
                                     <button onclick="consultar()" type="button" class="btn btn-success">Consultar</button>
                                     <button onclick="borrarFiltro()" type="button" class="btn btn-danger">Borrar</button>
                                 </div>
-
                             </div>
                             <!-- /.panel-body -->
                         </div>
-
                     </div>
                     <!-- /.col-lg-4 -->
                     <!-- /.col-lg-12 -->
