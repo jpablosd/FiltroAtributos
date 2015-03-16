@@ -25,7 +25,76 @@
 
         <script src="js/gs-base.js"></script>
 
+        <style type=text/css>
+            /* Add this attribute to the element that needs a tooltip */
+            [data-tooltip] {
+                position: relative;
+                z-index: 2;
+                cursor: pointer;
+            }
 
+            /* Hide the tooltip content by default */
+            [data-tooltip]:before,
+            [data-tooltip]:after {
+                visibility: hidden;
+                -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+                filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            /* Position tooltip above the element */
+            [data-tooltip]:before {
+                position: absolute;
+                bottom: 150%;
+                left: 50%;
+                margin-bottom: 5px;
+                margin-left: -80px;
+                padding: 7px;
+                width: 160px;
+                -webkit-border-radius: 3px;
+                -moz-border-radius:    3px;
+                border-radius:         3px;
+                background-color: #000;
+                background-color: hsla(0, 0%, 20%, 0.9);
+                color: #fff;
+                content: attr(data-tooltip);
+                text-align: center;
+                font-size: 14px;
+                line-height: 1.2;
+            }
+
+            /* Triangle hack to make tooltip look like a speech bubble */
+            [data-tooltip]:after {
+                position: absolute;
+                bottom: 150%;
+                left: 50%;
+                margin-left: -5px;
+                width: 0;
+                border-top: 5px solid #000;
+                border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+                border-right: 5px solid transparent;
+                border-left: 5px solid transparent;
+                content: " ";
+                font-size: 0;
+                line-height: 0;
+            }
+
+            /* Show tooltip content on hover */
+            [data-tooltip]:hover:before,
+            [data-tooltip]:hover:after {
+                visibility: visible;
+                -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+                filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+                opacity: 1;
+            }
+        </style>
+
+        <script>
+            $(document).ready(function(){
+                $('.tooltipped').tooltip({delay: 50});
+            });
+        </script>
 
 
     </head>
@@ -62,7 +131,6 @@
             </nav>
 
 
-
             <div id="page-wrapper">
                 <div class="row">
 
@@ -87,11 +155,27 @@
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <label>Operadores:</label>
-                                    <select id="listaOperadores" onchange="valorOperador(this.value)" multiple class="form-control">
-                                        <option>No hay Datos</option> 
-                                    </select>
                                     <br>
-                                    <button type="button" class="btn btn-success fa fa-arrow-down" onclick="seleccionarOperador()"></button>
+
+                                    <div id="operadores" >
+                                        <!--
+<button data-tooltip="description" type="button" class="btn-sm btn-default" value=">" ><</button>
+-->
+                                    </div>
+                                    <br>
+                                    <select class="form-control">
+                                        <option>AND</option>
+                                        <option>OR</option>
+                                        <option>TRUE</option>
+                                        <option>FALSE</option>
+                                        <option>NULL</option>
+                                        <option>Hay que cargarlos desde otra tabla para que quede bien.</option>
+
+
+                                    </select>
+
+                                    <br>
+
                                 </div>
                                 <div class="form-group col-lg-4">
 
@@ -100,7 +184,7 @@
                                         <label>Valores:</label>
                                         <button type="button" class="btn btn-success fa fa-cloud-download" onclick="cargarValores()" style = "float:right"> </button>
                                         <br><br>
-                                        <input type="text" placeholder="Ingrese Valor" class="form-control">
+                                        <input type="text" onchange="inputValor(this.value)" placeholder="Ingrese Valor" class="form-control">
                                     </div>
 
                                     <select id="listaDatos" onchange="valorValor(this.value)" multiple class="form-control">

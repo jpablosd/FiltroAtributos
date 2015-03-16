@@ -7,8 +7,6 @@ por los datos de la bd
 linea Nº2  por el nombre de la tabla
 */
 
-var consultaUsuario = "";
-
 var mostrarFiltro = false;
 function mostrarFiltros(){
     if(mostrarFiltro == true){
@@ -22,9 +20,7 @@ function mostrarFiltros(){
     cargarAtributos();
     cargarOperadores();
 }
-
-
-
+var consultaUsuario ="";
 //guardo el atributo que seleccione
 var atributoSeleccionado;
 function valorAtributo(valor){
@@ -35,8 +31,12 @@ function valorAtributo(valor){
 //guardo el operador seleccionado
 var operadorSeleccionado;
 function valorOperador(valor){
+    console.log(valor);
     operadorSeleccionado = valor;
+    consultaUsuario += operadorSeleccionado + " ";
+    document.getElementById("filtroCreado").value= consultaUsuario; 
 }
+
 
 //guardo el valor seleccionado
 var valorSeleccionado;
@@ -44,31 +44,47 @@ function valorValor(valor){
     valorSeleccionado = valor;
 }
 
+function inputValor(valor){
+    valorSeleccionado = valor;
+    console.log(valor);
+}
+
 function seleccionarAtributo(){
     if (atributoSeleccionado == undefined){
         alert("Primero seleccione un atributo");
     }
     else{
-    consultaUsuario += atributoSeleccionado + " ";
-    document.getElementById("filtroCreado").value= consultaUsuario;
+        consultaUsuario = atributoSeleccionado + " ";
+        document.getElementById("filtroCreado").value= consultaUsuario;
     }
 }
-function seleccionarOperador(){
-    consultaUsuario += operadorSeleccionado + " ";
-    document.getElementById("filtroCreado").value= consultaUsuario; 
-}
 function seleccionarValor(){
-    consultaUsuario += valorSeleccionado + " ";
-    document.getElementById("filtroCreado").value= consultaUsuario; 
+    if(valorSeleccionado == undefined){
+        alert("Primero cargue un valor");
+    }
+    else{
+        consultaUsuario += valorSeleccionado + " ";
+        document.getElementById("filtroCreado").value= consultaUsuario; 
+    }
+
 }
 function borrarFiltro(){
-    consultaUsuario = "";
+    consultaUsuario = null;
     document.getElementById("filtroCreado").value= consultaUsuario;    
 }
+
+
+
 //boton consultar
 function consultar(){
-    var consulta = document.getElementById("filtroCreado").value;
-    console.log("consultar: "+consulta);
+
+    if (consultaUsuario == undefined || atributoSeleccionado == undefined || operadorSeleccionado == undefined || valorSeleccionado == undefined){
+        alert("Primero genere una consulta");
+    }
+    else{
+        var consulta = document.getElementById("filtroCreado").value;
+        console.log("consultar: "+consulta);
+    }
 }
 
 
@@ -127,22 +143,20 @@ function cargarOperadores(){
             var arr2 = arr[a];
             //console.log(" "+arr2[3]); // atributo 1= nombre, 2= simbolo , 3= descripcion
             //console.log(" "+arr2[1]); // descripcion
-            out += "<option value='"+arr2[2]+"'"+">"+arr2[2]+"</option>";
+            out += "<button data-tooltip='"+arr2[3]+"' onclick='valorOperador(this.value)' type='button' class='btn-sm btn-default' value='"+arr2[2]+"'"+">"+arr2[2]+"</button>";
             a++;
         }
-        document.getElementById("listaOperadores").innerHTML = out;
+        document.getElementById("operadores").innerHTML = out;
     }
 }
 
 
 
 function cargarValores(){
-
     if (atributoSeleccionado == undefined){
         alert("Primero seleccione un atributo");
     }
     else{
-
         document.getElementById("listaDatos").innerHTML = "";
         //console.log("valores de "+atributoSeleccionado);
         var xmlhttp = new XMLHttpRequest();
@@ -168,10 +182,7 @@ function cargarValores(){
             }
             document.getElementById("listaDatos").innerHTML = out;
         }
-
     }
-
-
 }
 
 
