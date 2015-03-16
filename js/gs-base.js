@@ -13,35 +13,11 @@ var mostrarFiltro = false;
 function mostrarFiltros(){
     if(mostrarFiltro == true){
         mostrarFiltro = false;
-        $("#filtros").modal("close");
+        $("#filtros").hide();
     }
     else{
         mostrarFiltro = true;
-        $("#filtros").modal();
-//            {
-//                width: 800,  
-//                height: 600,
-//                show: {
-//                    effect: "scale",
-//                    duration: 5000
-//                },
-//                //show: "scale",
-//                //hide: "scale", 
-//                hide: {
-//                    effect: "blind",
-//                    duration: 1000
-//                },
-//                resizable: "false", 
-//                position: "center",
-//                modal: "true"
-//                /*,
-//                buttons: {
-//                    "Cerrar": function () {
-//                        $(this).dialog("close");
-//                    }
-//                }*/
-//            }
-        
+        $("#filtros").show();
     }
     cargarAtributos();
     cargarOperadores();

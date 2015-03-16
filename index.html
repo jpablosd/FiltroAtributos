@@ -17,14 +17,6 @@
 
         <!-- DataTables Responsive CSS -->
         <link href="plugins/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet" />
-        
-        
-        
-
-
-        <!--
-<link rel="stylesheet" href="css/jquery-ui.css" />
--->
 
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=visualization,drawing,places&sensor=false"></script>
 
@@ -32,9 +24,33 @@
         <script src="plugins/jquery/dist/jquery-ui.min.js"></script>
 
         <script src="js/gs-base.js"></script>
-        
-        
-        
+
+        <script type="text/javascript"> 
+
+
+            $(document).ready(function(){
+                $("#mostrarFiltros").click(function() { 
+                    $("#filtros").dialog({ 
+                        width: 590,  
+                        height: 350,
+                        show: "scale",
+                        hide: "scale", 
+                        resizable: "false", 
+                        position: "center",
+                        modal: "true"
+                    });
+                });
+            });
+
+        </script>
+
+        <style type="text/css"> 
+            #filtros{
+                display:none;
+
+            }
+
+        </style>
 
 
 
@@ -77,14 +93,10 @@
                 <div class="row">
 
                     <!-- FILTROS -->
-                    <div id="filtros" style="display:none">
+                    <div id="filtros">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <div class="box-title"><i class="fa fa-bell fa-fw"></i> Creación De Filtro</div>
-
-                                <div class="pull-right box-tools">
-                                    <button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                                </div>
+                                <i class="fa fa-bell fa-fw"></i> Creación De Filtro
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
@@ -92,7 +104,7 @@
                                 <br>
                                 <div class="form-group col-lg-4">
                                     <label>Atributos:</label>
-                                    <select id="listaAtributos" onchange="valorAtributo(this.value)" multiple class="form-control" size="8">
+                                    <select id="listaAtributos" onchange="valorAtributo(this.value)" multiple class="form-control">
                                         <option>No hay Datos</option> 
 
                                     </select>
@@ -101,7 +113,7 @@
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <label>Operadores:</label>
-                                    <select id="listaOperadores" onchange="valorOperador(this.value)" multiple class="form-control" size="8">
+                                    <select id="listaOperadores" onchange="valorOperador(this.value)" multiple class="form-control">
                                         <option>No hay Datos</option> 
                                     </select>
                                     <br>
@@ -112,8 +124,7 @@
 
                                     <div class="form-group">
                                         <label>Valores:</label>
-                                        <button type="button" class="btn btn-success fa fa-refresh" onclick="cargarValores()" style = "float:right"> </button>
-                                        <!--  fa-refresh -->
+                                        <button type="button" class="btn btn-success fa fa-cloud-download" onclick="cargarValores()" style = "float:right"> </button>
                                         <br><br>
                                         <input type="text" placeholder="Ingrese Valor" class="form-control">
                                     </div>
