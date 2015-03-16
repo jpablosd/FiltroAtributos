@@ -45,8 +45,13 @@ function valorValor(valor){
 }
 
 function seleccionarAtributo(){
+    if (atributoSeleccionado == undefined){
+        alert("Primero seleccione un atributo");
+    }
+    else{
     consultaUsuario += atributoSeleccionado + " ";
     document.getElementById("filtroCreado").value= consultaUsuario;
+    }
 }
 function seleccionarOperador(){
     consultaUsuario += operadorSeleccionado + " ";
@@ -98,6 +103,39 @@ function cargarAtributos(){
     }
 }
 
+
+function cargarOperadores(){
+    var xmlhttp = new XMLHttpRequest();
+    var url = "require/cargarOperadores.php";
+
+    xmlhttp.onreadystatechange=function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            myFunction(xmlhttp.responseText);
+        }
+    }
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+
+    function myFunction(response) {
+        var arr = JSON.parse(response);
+        var i;
+        var out = "";
+        //console.log(arr.length);
+        var a=0;
+        while(a<arr.length){
+            //console.log(arr[a]);
+            var arr2 = arr[a];
+            //console.log(" "+arr2[3]); // atributo 1= nombre, 2= simbolo , 3= descripcion
+            //console.log(" "+arr2[1]); // descripcion
+            out += "<option value='"+arr2[2]+"'"+">"+arr2[2]+"</option>";
+            a++;
+        }
+        document.getElementById("listaOperadores").innerHTML = out;
+    }
+}
+
+
+
 function cargarValores(){
 
     if (atributoSeleccionado == undefined){
@@ -135,40 +173,6 @@ function cargarValores(){
 
 
 }
-
-
-
-function cargarOperadores(){
-    var xmlhttp = new XMLHttpRequest();
-    var url = "require/cargarOperadores.php";
-
-    xmlhttp.onreadystatechange=function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            myFunction(xmlhttp.responseText);
-        }
-    }
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-
-    function myFunction(response) {
-        var arr = JSON.parse(response);
-        var i;
-        var out = "";
-        //console.log(arr.length);
-        var a=0;
-        while(a<arr.length){
-            //console.log(arr[a]);
-            var arr2 = arr[a];
-            //console.log(" "+arr2[3]); // atributo 1= nombre, 2= simbolo , 3= descripcion
-            //console.log(" "+arr2[1]); // descripcion
-            out += "<option value='"+arr2[2]  +"'"+">"+arr2[1]+"</option>";
-            a++;
-        }
-        document.getElementById("listaOperadores").innerHTML = out;
-    }
-}
-
-
 
 
 

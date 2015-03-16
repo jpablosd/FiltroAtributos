@@ -358,11 +358,6 @@ table.dataTable thead .sorting:after {
 width: 100% !important;
 }
 }
-
-
-
-
-
 .login_content{color:#ff0000;padding-top:10px;}
 
 
@@ -391,5 +386,12 @@ list-style: none;
     
 /**MAPA **/
 .gs-mapcontent{width: 100%;margin-bottom: 5px;}    
-    
-    
+
+
+/**  ------------------------------------ */
+
+
+
+
+
+
