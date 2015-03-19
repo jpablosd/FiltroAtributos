@@ -6,6 +6,11 @@ por los datos de la bd
 /require/cargarAtributos.php
 linea Nº2  por el nombre de la tabla
 */
+
+
+
+
+
 var mostrarFiltro = false;
 function mostrarFiltros(){
     if(mostrarFiltro == true){
@@ -23,9 +28,16 @@ var consultaUsuario ="";
 
 //guardo el atributo que seleccione
 var atributoSeleccionado;
+var tipoAtributoSeleccionado;
 function valorAtributo(valor){
     //console.log(valor);
-    atributoSeleccionado = valor;
+    //convertir el value a array en valor y descripcion y hacer una variable como operadorConsultaFiltro.
+    var atributo = valor.split(",");
+    atributoSeleccionado = atributo[0]; //clave (id, nombre, cualquier cosa)
+    tipoAtributoSeleccionado = atributo[1];
+
+    //console.log(atributoSeleccionado);
+    //console.log(tipoAtributoSeleccionado);
 }
 
 
@@ -42,8 +54,9 @@ function valorOperador(valor){
 //Al seleccionar un operador del select para hacer la consulta con 
 var operadorConsultaFiltro;
 function cargarOperador(value){
+
     operadorConsultaFiltro = value;
-    //console.log(value);
+    //console.log(operadorConsultaFiltro);
     document.getElementById("cargarOperador").innerHTML = "<button onclick='operadorConsulta()' type='button' class='btn btn-success fa fa-arrow-down'></button>";    
 }
 
@@ -74,20 +87,35 @@ function seleccionarAtributo(){
         alert("Primero seleccione un atributo");
     }
     else{
+        console.log();
         consultaUsuario += atributoSeleccionado + " ";
         document.getElementById("filtroCreado").value= consultaUsuario;
     }
 }
+
 function seleccionarValor(){
     if(valorSeleccionado == undefined){
         alert("Primero cargue un valor");
     }
     else{
-        consultaUsuario += valorSeleccionado + " ";
-        document.getElementById("filtroCreado").value= consultaUsuario; 
+        //encontrar el texto en una variable
+        var varchar = "varchar";
+        if (tipoAtributoSeleccionado.indexOf(varchar) != -1) {
+            //console.log("es texto");
+            consultaUsuario += '"'+valorSeleccionado +'" ';
+            document.getElementById("filtroCreado").value= consultaUsuario;
+        }
+        else{
+            //console.log("No es texto");
+            consultaUsuario += valorSeleccionado + " ";
+            document.getElementById("filtroCreado").value= consultaUsuario;
+        }
     }
-
 }
+
+
+
+
 function borrarFiltro(){
     consultaUsuario = "";
     document.getElementById("filtroCreado").value= consultaUsuario;    
@@ -129,7 +157,8 @@ function cargarAtributos(){
             var arr2 = arr[a];
             //console.log(" "+arr2[0]); // atributo
             //console.log(" "+arr2[1]); // descripcion
-            out += "<option value='"+arr2[0]  +"'"+">"+arr2[0]+"</option>";
+
+            out += "<option value='"+arr2[0]+","+arr2[1]  +"'"+">"+arr2[0]+"</option>";
             a++;
         }
         document.getElementById("listaAtributos").innerHTML = out;
