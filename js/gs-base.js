@@ -6,7 +6,6 @@ por los datos de la bd
 /require/cargarAtributos.php
 linea Nº2  por el nombre de la tabla
 */
-
 var mostrarFiltro = false;
 function mostrarFiltros(){
     if(mostrarFiltro == true){
@@ -31,10 +30,29 @@ function valorAtributo(valor){
 //guardo el operador seleccionado
 var operadorSeleccionado;
 function valorOperador(valor){
-    console.log(valor);
+    //console.log(valor);
     operadorSeleccionado = valor;
     consultaUsuario += operadorSeleccionado + " ";
     document.getElementById("filtroCreado").value= consultaUsuario; 
+}
+
+
+//Al seleccionar un operador del select para hacer la consulta con 
+var operadorConsultaFiltro;
+function cargarOperador(value){
+    operadorConsultaFiltro = value;
+    //console.log(value);
+    document.getElementById("cargarOperador").innerHTML = "<button onclick='operadorConsulta()' type='button' class='btn btn-success fa fa-arrow-down'></button>";    
+}
+
+function operadorConsulta(){
+    if(operadorConsultaFiltro==undefined || consultaUsuario == undefined || atributoSeleccionado == undefined || operadorSeleccionado == undefined || valorSeleccionado == undefined){
+        alert("Primero genere una consulta");
+    }else{
+        //console.log(operadorConsultaFiltro);
+        consultaUsuario += operadorConsultaFiltro + " ";
+        document.getElementById("filtroCreado").value= consultaUsuario; 
+    }
 }
 
 
@@ -46,7 +64,7 @@ function valorValor(valor){
 
 function inputValor(valor){
     valorSeleccionado = valor;
-    console.log(valor);
+    //console.log(valor);
 }
 
 function seleccionarAtributo(){
@@ -54,7 +72,7 @@ function seleccionarAtributo(){
         alert("Primero seleccione un atributo");
     }
     else{
-        consultaUsuario = atributoSeleccionado + " ";
+        consultaUsuario += atributoSeleccionado + " ";
         document.getElementById("filtroCreado").value= consultaUsuario;
     }
 }
@@ -86,9 +104,6 @@ function consultar(){
         console.log("consultar: "+consulta);
     }
 }
-
-
-
 
 
 function cargarAtributos(){

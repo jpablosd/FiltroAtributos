@@ -163,19 +163,15 @@
 -->
                                     </div>
                                     <br>
-                                    <select class="form-control">
-                                        <option>AND</option>
-                                        <option>OR</option>
-                                        <option>TRUE</option>
-                                        <option>FALSE</option>
-                                        <option>NULL</option>
-                                        <option>Hay que cargarlos desde otra tabla para que quede bien.</option>
-
-
+                                    <select onchange="cargarOperador(this.value)" class="form-control">
+                                        <option value="AND">IN</option>
+                                        <option value="FALSE">NOT IN</option>
+                                  
                                     </select>
-
                                     <br>
-
+                                    <div id="cargarOperador">
+                                        
+                                    </div>
                                 </div>
                                 <div class="form-group col-lg-4">
 
