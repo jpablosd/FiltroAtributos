@@ -146,7 +146,7 @@
                                 <br>
                                 <div class="form-group col-lg-4">
                                     <label>Atributos:</label>
-                                    <select id="listaAtributos" onchange="valorAtributo(this.value)" multiple class="form-control">
+                                    <select id="listaAtributos" onchange="valorAtributo(this.value)" ondblclick="seleccionarAtributo()" multiple class="form-control">
                                         <option>No hay Datos</option> 
 
                                     </select>
@@ -163,9 +163,10 @@
 -->
                                     </div>
                                     <br>
-                                    <select onchange="cargarOperador(this.value)" class="form-control">
-                                        <option value="AND">IN</option>
-                                        <option value="FALSE">NOT IN</option>
+                                    <select onchange="cargarOperador(this.value)" ondblclick="cargarOperador(this.value)" class="form-control">
+                                        <option value="">Seleccione</option>
+                                        <option value="IN">IN</option>
+                                        <option value="NOT IN">NOT IN</option>
                                   
                                     </select>
                                     <br>
@@ -183,7 +184,7 @@
                                         <input type="text" onchange="inputValor(this.value)" placeholder="Ingrese Valor" class="form-control">
                                     </div>
 
-                                    <select id="listaDatos" onchange="valorValor(this.value)" multiple class="form-control">
+                                    <select id="listaDatos" onchange="valorValor(this.value)" ondblclick="seleccionarValor()" multiple class="form-control">
                                         <option>No hay Datos</option>
                                     </select>
                                     <br>

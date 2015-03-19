@@ -20,12 +20,14 @@ function mostrarFiltros(){
     cargarOperadores();
 }
 var consultaUsuario ="";
+
 //guardo el atributo que seleccione
 var atributoSeleccionado;
 function valorAtributo(valor){
     //console.log(valor);
     atributoSeleccionado = valor;
 }
+
 
 //guardo el operador seleccionado
 var operadorSeleccionado;
@@ -87,7 +89,7 @@ function seleccionarValor(){
 
 }
 function borrarFiltro(){
-    consultaUsuario = null;
+    consultaUsuario = "";
     document.getElementById("filtroCreado").value= consultaUsuario;    
 }
 
@@ -199,8 +201,6 @@ function cargarValores(){
         }
     }
 }
-
-
 
 
 
