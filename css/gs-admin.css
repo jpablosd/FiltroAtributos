@@ -358,6 +358,11 @@ table.dataTable thead .sorting:after {
 width: 100% !important;
 }
 }
+
+
+
+
+
 .login_content{color:#ff0000;padding-top:10px;}
 
 
@@ -385,13 +390,28 @@ list-style: none;
     }
     
 /**MAPA **/
-.gs-mapcontent{width: 100%;margin-bottom: 5px;}    
-
-
-/**  ------------------------------------ */
+.gs-mapcontent{width: 100%;margin-bottom: 5px;}   
 
 
 
+/***modal****/
 
 
+.modal-backdrop {
+  background-color: #FFF !important;
+}
 
+
+@media (min-width: 992px)
+.modal-lg {
+  width: 900px;
+}
+
+.modal-backdrop.in {
+  filter: alpha(opacity=50);
+  opacity: .5;
+}
+
+ 
+    
+    

@@ -8,18 +8,15 @@ linea Nº2  por el nombre de la tabla
 */
 
 
-
-
-
 var mostrarFiltro = false;
 function mostrarFiltros(){
     if(mostrarFiltro == true){
         mostrarFiltro = false;
-        $("#filtros").hide();
+        //$("#filtros").hide();
     }
     else{
         mostrarFiltro = true;
-        $("#filtros").show();
+        $("#filtros").modal();
     }
     cargarAtributos();
     cargarOperadores();
